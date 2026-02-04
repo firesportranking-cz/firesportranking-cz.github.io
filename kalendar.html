@@ -3,8 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kalendář</title>
+  <title>Kalendář soutěží</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background: #eee;
+    }
+  </style>
 </head>
 <body>
 
@@ -15,7 +30,53 @@
 </nav>
 
 <h1>📅 Kalendář soutěží</h1>
-<p>14.2.2026 Ostravská hala 60 m</p>
+
+<table id="kalendar">
+  <thead>
+    <tr>
+      <th>Název</th>
+      <th>Datum</th>
+      <th>Místo</th>
+      <th>Kategorie</th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
+
+<script>
+// ODVOZENÝ OD TÉ TVÉ TABULKY
+// opensheet.elk.sh vezme tvůj public sheet a vrátí JSON
+const sheetUrl = "https://opensheet.elk.sh/2PACX-1vTmqebTfEM8MbRnkSeFC6lRNOqgXgS9GSSDF6FUtZcAFsXUY9uwO4hvAYLsLbeW3LeUs_pn666NU1Z2/Sheet1";
+
+fetch(sheetUrl)
+  .then(res => res.json())
+  .then(data => {
+    const tbody = document.querySelector("#kalendar tbody");
+    
+    data.forEach(row => {
+      const tr = document.createElement("tr");
+
+      // řádky v opensheet mají názvy přesně podle hlaviček
+      const nazev   = row["Nazev"]   || "";
+      const datum   = row["Datum"]   || "";
+      const misto   = row["Misto"]   || "";
+      const kategorie = row["Kategorie"] || "";
+
+      tr.innerHTML = `
+        <td>${nazev}</td>
+        <td>${datum}</td>
+        <td>${misto}</td>
+        <td>${kategorie}</td>
+      `;
+      tbody.appendChild(tr);
+    });
+  })
+  .catch(err => {
+    console.error("Chyba načítání dat:", err);
+    const tbody = document.querySelector("#kalendar tbody");
+    tbody.innerHTML = "<tr><td colspan='4'>Nepodařilo se načíst data.</td></tr>";
+  });
+</script>
 
 </body>
 </html>
