@@ -1,47 +1,6 @@
-<!DOCTYPE html>
-<html lang="cs">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kalendář soutěží</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<nav>
-  <a href="index.html">Aktuality</a>
-  <a href="kalendar.html">Kalendář</a>
-  <a href="sportovci.html">Sportovci</a>
-</nav>
-
 <h1>📅 Kalendář soutěží</h1>
-<select id="filter" onchange="zmenList()">
-  <option value="vse">Vše</option>
-  <option value="60m">60m</option>
-</select>
-  
+
 <iframe
-  id="tabulka"
-  src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTmqebTfEM8MbRnkSeFC6lRNOqgXgS9GSSDF6FUtZcAFsXUY9uwO4hvAYLsLbeW3LeUs_pn666NU1Z2/pubhtml?gid=0"
+  src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTmqebTfEM8MbRnkSeFC6lRNOqgXgS9GSSDF6FUtZcAFsXUY9uwO4hvAYLsLbeW3LeUs_pn666NU1Z2/pubhtml"
   style="width:100%; height:80vh; border:none;">
 </iframe>
-
-<script>
-function zmenList() {
-  const vyber = document.getElementById("filter").value;
-  const iframe = document.getElementById("tabulka");
-
-  let gid = "0";
-
-  if (vyber === "60m") {
-    gid = "gid=123456789";
-  }
-
-  iframe.src =
-    "https://docs.google.com/spreadsheets/d/e/2PACX-1vTmqebTfEM8MbRnkSeFC6lRNOqgXgS9GSSDF6FUtZcAFsXUY9uwO4hvAYLsLbeW3LeUs_pn666NU1Z2/pubhtml?gid=" +
-    gid;
-}
-</script>
-  
-</body>
-</html>
