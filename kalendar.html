@@ -15,7 +15,11 @@
 </nav>
 
 <h1>📅 Kalendář soutěží</h1>
-
+<select id="filter" onchange="zmenList()">
+  <option value="vse">Vše</option>
+  <option value="60m">60m</option>
+</select>
+  
 <iframe 
   src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTmqebTfEM8MbRnkSeFC6lRNOqgXgS9GSSDF6FUtZcAFsXUY9uwO4hvAYLsLbeW3LeUs_pn666NU1Z2/pubhtml"
   style="width:100%; height:80vh; border:none;">
