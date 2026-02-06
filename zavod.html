@@ -27,5 +27,29 @@ if (nazev) {
 }
 </script>
 
+  <h1 id="nazevZavodu"></h1>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>Pořadí</th>
+      <th>Jméno</th>
+      <th>Tým</th>
+      <th>Čas</th>
+      <th>Body</th>
+    </tr>
+  </thead>
+  <tbody id="vysledky"></tbody>
+</table>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const nazev = params.get("nazev");
+
+document.getElementById("nazevZavodu").innerText = nazev;
+
+// SEM později přidáme načítání z Google Sheets
+</script>
+
 </body>
 </html>
