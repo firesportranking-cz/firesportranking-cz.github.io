@@ -16,7 +16,16 @@
 
 <h1>Název závodu</h1>
 
-<p>Zde budou informace o závodu.</p>
+<p id="nazev"></p>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const nazev = params.get("nazev");
+
+if (nazev) {
+  document.getElementById("nazev").textContent = nazev;
+}
+</script>
 
 </body>
 </html>
