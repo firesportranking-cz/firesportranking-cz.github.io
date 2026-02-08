@@ -51,74 +51,12 @@ document.getElementById("nazevZavodu").innerText = nazev;
 // SEM později přidáme načítání z Google Sheets
 </script>
 
- <script>
-const params = new URLSearchParams(window.location.search);
-const nazev = params.get("nazev");
-
-document.getElementById("nazevZavodu").innerText = nazev;
-
-const sheetURL =
-"https://docs.google.com/spreadsheets/d/e/2PACX-1vTmqebTfEM8MbRnkSeFC6lRNOqgXgS9GSSDF6FUtZcAFsXUY9uwO4hvAYLsLbeW3LeUs_pn666NU1Z2/gviz/tq?tqx=out:json&sheet=" 
-+ encodeURIComponent(nazev);
-
-fetch(sheetURL)
-.then(res => res.text())
-.then(data => {
-
-  const json = JSON.parse(data.substr(47).slice(0, -2));
-  const rows = json.table.rows;
-
-  const kategorie = {};
-
-  rows.forEach(r => {
-    const kat = r.c[0]?.v || "Bez kategorie";
-
-    if (!kategorie[kat]) {
-      kategorie[kat] = [];
-    }
-
-    kategorie[kat].push({
-      jmeno: r.c[1]?.v || "",
-      tym: r.c[2]?.v || "",
-      cas: r.c[3]?.v || "",
-      body: r.c[4]?.v || ""
-    });
-  });
-
-  let html = "";
-
-  Object.keys(kategorie).forEach(kat => {
-
-    html += `<h2>${kat}</h2>`;
-    html += `
-      <table border="1">
-        <tr>
-          <th>Pořadí</th>
-          <th>Jméno</th>
-          <th>Tým</th>
-          <th>Čas</th>
-          <th>Body</th>
-        </tr>
-    `;
-
-    kategorie[kat].forEach((zavodnik, index) => {
-      html += `
-        <tr>
-          <td>${index + 1}</td>
-          <td>${zavodnik.jmeno}</td>
-          <td>${zavodnik.tym}</td>
-          <td>${zavodnik.cas}</td>
-          <td>${zavodnik.body}</td>
-        </tr>
-      `;
-    });
-
-    html += "</table>";
-  });
-
-  document.getElementById("vysledky").innerHTML = html;
-});
-  </script>
+ <iframe 
+src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTmqebTfEM8MbRnkSeFC6lRNOqgXgS9GSSDF6FUtZcAFsXUY9uwO4hvAYLsLbeW3LeUs_pn666NU1Z2/pubhtml?gid=522438484&single=true"
+width="100%"
+height="600"
+style="border:none;">
+ </iframe>
 
 </body>
 </html>
