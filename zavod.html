@@ -38,5 +38,32 @@ document.getElementById("nazevZavodu").innerText = nazev;
 // SEM později přidáme načítání z Google Sheets
 </script>
 
+  <iframe id="tabulka"
+width="100%"
+height="600"
+style="border:none;">
+</iframe>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const nazev = params.get("nazev") || "";
+
+let gid = "";
+
+// rozhodnutí podle názvu závodu
+if (nazev.toLowerCase().includes("úněšov")) {
+  gid = "522438484";
+}
+else if (nazev.toLowerCase().includes("přibyslav")) {
+  gid = "1919795456";
+}
+else if (nazev.toLowerCase().includes("kostelec")) {
+  gid = "267383050";
+}
+
+document.getElementById("tabulka").src =
+"https://docs.google.com/spreadsheets/d/e/2PACX-1vTmqebTfEM8MbRnkSeFC6lRNOqgXgS9GSSDF6FUtZcAFsXUY9uwO4hvAYLsLbeW3LeUs_pn666NU1Z2/pubhtml?gid=" + gid + "&single=true";
+</script>
+
 </body>
 </html>
