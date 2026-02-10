@@ -48,7 +48,21 @@ style="border:none;">
 const params = new URLSearchParams(window.location.search);
 const nazev = params.get("nazev");
 
-alert(nazev);
+let odkaz = "";
+
+if (nazev === "ZHK Kostelec nad Černými lesy") {
+  odkaz = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTmqebTfEM8MbRnkSeFC6lRNOqgXgS9GSSDF6FUtZcAFsXUY9uwO4hvAYLsLbeW3LeUs_pn666NU1Z2/pubhtml?gid=267383050&single=true";
+}
+
+if (nazev === "ZHK Přibyslav") {
+  odkaz = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTmqebTfEM8MbRnkSeFC6lRNOqgXgS9GSSDF6FUtZcAFsXUY9uwO4hvAYLsLbeW3LeUs_pn666NU1Z2/pubhtml?gid=1919795456&single=true";
+}
+
+if (nazev === "ICE CUP Úněšov") {
+  odkaz = "SEM_DEJ_ODKAZ_NA_UNESOV";
+}
+
+document.getElementById("tabulka").src = odkaz;
 </script>
 
 </body>
