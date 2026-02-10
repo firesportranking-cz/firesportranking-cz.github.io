@@ -18,26 +18,6 @@
 
 <p id="nazev"></p>
 
-<script>
-const params = new URLSearchParams(window.location.search);
-const nazev = params.get("nazev");
-
-if (nazev) {
-  document.getElementById("nazev").textContent = nazev;
-}
-</script>
-
-  <h1 id="nazevZavodu"></h1>
-
-<script>
-const params = new URLSearchParams(window.location.search);
-const nazev = params.get("nazev");
-
-document.getElementById("nazevZavodu").innerText = nazev;
-
-// SEM později přidáme načítání z Google Sheets
-</script>
-
 <iframe id="tabulka"
 width="100%"
 height="600"
